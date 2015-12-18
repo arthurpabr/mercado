@@ -16,7 +16,9 @@
         
         <h1>Produtos</h1>
         <table class="table">
-        <?php foreach($produtos as $produto){ ?>
+        <?php foreach($produtos as $produto){ 
+            //if($produto["vendido"] == 0){    
+        ?>
             <tr>
                 <td>
                     <?=anchor("produtos/".$produto["id"], $produto["nome"])?>
@@ -24,7 +26,9 @@
                 <td><?= character_limiter($produto["descricao"],10)?></td>
                 <td><?= numeroEmReais($produto["preco"])?></td>
             </tr>
-        <?php } ?>
+        <?php 
+            //} 
+        }?>
         </table>
         
         <?php if($this->session->userdata("usuario_logado")) : ?>

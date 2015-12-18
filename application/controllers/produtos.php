@@ -3,14 +3,11 @@
 class Produtos extends CI_Controller {
     
     public function index(){
-        
         //$this->output->enable_profiler(TRUE);
-        
         $this->load->model("produtos_model");
-        $produtos = $this->produtos_model->buscaTodos();
-        
-        $dados = array("produtos" => $produtos);
         $this->load->helper(array("currency"));
+        $produtos = $this->produtos_model->buscaTodos();
+        $dados = array("produtos" => $produtos);
         $this->load->view("produtos/index.php", $dados);
     }
     
@@ -48,7 +45,7 @@ class Produtos extends CI_Controller {
     
     public function nao_tenha_a_palavra_produto($str) {
         $posicao = strpos($str, 'produto');
-        if($posicao !== FALSE){
+        if($posicao == FALSE){
             return TRUE;
             
         } else {
